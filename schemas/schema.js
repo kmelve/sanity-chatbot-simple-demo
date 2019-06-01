@@ -4,6 +4,7 @@ import createSchema from 'part:@sanity/base/schema-creator'
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
+import chatbot from './chatbot'
 import localeText from './localeText.js'
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -114,29 +115,6 @@ export default createSchema({
       }
 
     },
-    {
-      name: 'chatbot',
-      type: 'document',
-      title: 'Chatbot',
-      fields: [
-        {
-          name: 'name',
-          type: 'string',
-          title: 'Name'
-        },
-        {
-          name: 'questions',
-          type: 'array',
-          of: [
-            {
-              type: 'reference',
-              to: [{
-                type: 'question'
-              }]
-            }
-          ]
-        }
-      ]
-    }
+    chatbot
   ])
 })
